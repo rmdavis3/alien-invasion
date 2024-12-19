@@ -1,4 +1,14 @@
 
+"""
+settings.py
+
+This module defines the Settings class, which stores all configuration settings 
+for the Alien Invasion game.
+
+Classes:
+    Settings: Stores game settings, including screen dimensions and background color.
+"""
+
 
 class Settings:
     """A class to store all settings for Alien Invasion"""

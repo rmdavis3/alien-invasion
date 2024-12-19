@@ -1,3 +1,14 @@
+"""
+alien_invasion.py
+
+This module implements the Alien Invasion game, a simple arcade game where the
+player must defend against waves of aliens.
+
+Classes:
+    AlienInvasion: Manages game initialization, resources, and the main game loop.
+"""
+
+
 import sys
 import pygame
 
@@ -9,7 +20,7 @@ class AlienInvasion:
 
     def __init__(self):
         """Initialize the game, and create game resources."""
-        pygame.init()
+        pygame.init()  # pylint: disable=no-member
         self.clock = pygame.time.Clock()
         self.settings = Settings()
         self.screen = pygame.display.set_mode(
@@ -24,7 +35,7 @@ class AlienInvasion:
         while True:
             # Watch for keyboard and mouse events.
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:  # type: ignore
+                if event.type == pygame.QUIT:  # pylint: disable=no-member
                     sys.exit()
 
             # Redraw the screen during each pass through the loop.
