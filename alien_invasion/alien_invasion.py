@@ -8,7 +8,6 @@ Classes:
     AlienInvasion: Manages game initialization, resources, and the main game loop.
 """
 
-
 import sys
 import pygame
 
