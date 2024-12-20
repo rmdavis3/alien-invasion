@@ -20,12 +20,12 @@ class Ship:
         # Store a float for the ship's exact horizontal position.
         self.x = float(self.rect.x)
 
-        # Movement flags; start with a ship that's not moving
+        # Movement flags; start with a ship that's not moving.
         self.moving_right = False
         self.moving_left = False
 
     def update(self):
-        """Update the ship's position based on the movement flag."""
+        """Update the ship's position based on the movement flags."""
         # Update the ship's x value, not the rect.
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
