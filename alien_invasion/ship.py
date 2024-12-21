@@ -10,7 +10,7 @@ class Ship:
     """A class to manage the ship."""
 
     def __init__(self, ai_game):
-        """Initialize the ship and set its starting position"""
+        """Initialize the ship and set its starting position."""
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
@@ -38,7 +38,7 @@ class Ship:
             self.x -= self.settings.ship_speed
 
         # Update rect object from self.x.
-        self.rect.x = self.x
+        self.rect.x = self.x  # type: ignore
 
     def blitme(self):
         """Draw the ship at its current location."""
