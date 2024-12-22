@@ -92,6 +92,10 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
 
+    def _update_aliens(self):
+        """Update the positions of all aliens in the fleet."""
+        self.aliens.update()
+
     def _create_fleet(self):
         """Create the fleet of aliens."""
         # Create an alien and keep adding aliens until there's no more room left.
@@ -115,10 +119,6 @@ class AlienInvasion:
         new_alien.rect.x = x_position
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
-
-    def _update_aliens(self):
-        """Update the positions of all aliens in the fleet."""
-        self.aliens.update()
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
