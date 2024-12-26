@@ -15,6 +15,7 @@ import pygame
 
 from settings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 from ship import Ship
 from bullet import Bullet
@@ -36,6 +37,9 @@ class AlienInvasion:
 
         # Create an instance to store game statistics.
         self.stats = GameStats(self)
+
+        # Create an instance
+        self.scoreboard = Scoreboard(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -193,7 +197,7 @@ class AlienInvasion:
         # Spacing between aliens is one alien width and one alien height.
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
-        current_x, current_y = alien_width, alien_height
+        current_x, current_y = alien_width, alien_height + 22
         while current_y < (self.settings.screen_height - 14 * alien_height):
             while current_x < (self.settings.screen_width - 2 * alien_width):
                 self._create_alien(current_x, current_y)
@@ -231,6 +235,9 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.ship.blitme()
         self.aliens.draw(self.screen)
+
+        # Draw the score information.
+        self.scoreboard.draw_score()
 
         # Draw the play button if the game is inactive.
         if not self.game_active:
