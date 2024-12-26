@@ -1,11 +1,29 @@
 """
 alien_invasion.py
 
-This module implements the Alien Invasion game, a simple arcade game where the
-player must defend against waves of aliens.
+This module implements the Alien Invasion game, a classic arcade-style game where
+the player controls a spaceship to defend against waves of alien invaders.
+
+The player uses keyboard controls to move the spaceship left or right and shoot
+bullets to destroy aliens. The game tracks the player's score, level, and remaining
+ships, with progressively challenging waves of aliens as levels increase.
+
+Modules:
+    - settings: Contains game configuration settings.
+    - game_stats: Tracks game statistics such as score, level, and remaining ships.
+    - scoreboard: Handles the visual display of scores, levels, and ships.
+    - button: Manages the Play button functionality.
+    - ship: Represents the player's ship and its movement.
+    - bullet: Defines the bullets fired by the player's ship.
+    - alien: Represents the alien invaders and their behavior.
 
 Classes:
-    AlienInvasion: Manages game initialization, resources, and the main game loop.
+    AlienInvasion: The main class that manages the game initialization, event handling,
+    game updates, and rendering.
+
+Usage:
+    Run this script to start the Alien Invasion game:
+        $ python alien_invasion.py
 """
 
 import sys
@@ -23,7 +41,47 @@ from alien import Alien
 
 
 class AlienInvasion:
-    """Overall class to manage game asets and behavior."""
+    """
+    Overall class to manage game assets and behavior for the Alien Invasion game.
+
+    This class initializes the game, sets up its resources, and handles the main
+    game loop, including event handling, updating game states, and rendering
+    visuals.
+
+    Attributes:
+        clock (pygame.time.Clock): Regulates the game's frame rate.
+        settings (Settings): Stores game settings, including screen dimensions,
+            ship speed, bullet speed, and alien behavior.
+        screen (pygame.Surface): Represents the main game display surface.
+        stats (GameStats): Tracks game statistics such as score, level, and remaining ships.
+        scoreboard (Scoreboard): Manages the display of scores, levels, and remaining ships.
+        ship (Ship): Represents the player's ship.
+        bullets (pygame.sprite.Group): Group for managing active bullets in the game.
+        aliens (pygame.sprite.Group): Group for managing aliens in the fleet.
+        game_active (bool): Indicates whether the game is currently active.
+        play_button (Button): The Play button displayed at the start or after a game ends.
+
+    Methods:
+        __init__(): Initializes the game and sets up resources.
+        run_game(): Starts the main game loop.
+        _check_events(): Handles user input events (keyboard and mouse).
+        _check_play_button(mouse_pos): Starts a new game when the Play button is clicked.
+        _check_keydown_events(event): Handles key press events.
+        _check_keyup_events(event): Handles key release events.
+        _fire_bullet(): Fires a bullet if under the allowed limit.
+        _udpate_bullets(): Updates bullet positions and handles collisions with aliens.
+        _check_bullet_alien_collisions(): Handles bullet-alien collisions, updates scores,
+            and generates a new fleet if necessary.
+        _ship_hit(): Responds to the player's ship being hit by an alien.
+        _update_aliens(): Updates alien positions and checks for collisions with the ship or
+            the screen bottom.
+        _check_aliens_bottom(): Handles the case where aliens reach the bottom of the screen.
+        _create_fleet(): Creates a fleet of aliens to attack the player.
+        _create_alien(x_position, y_position): Creates an alien and positions it.
+        _check_fleet_edges(): Changes direction of the alien fleet when it reaches screen edges.
+        _change_fleet_direction(): Drops the fleet and changes its direction.
+        _update_screen(): Draws all game elements and updates the screen display.
+    """
 
     def __init__(self):
         """Initialize the game, and create game resources."""
