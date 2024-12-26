@@ -151,6 +151,7 @@ class AlienInvasion:
                 # Add points for all aliens hit by a single bullet
                 self.stats.score += self.settings.alien_points * len(aliens)
             self.scoreboard.prep_score()
+            self.scoreboard.check_high_score()
 
         if not self.aliens:
             # Destory existing bullets and create new fleet.
@@ -244,7 +245,7 @@ class AlienInvasion:
         self.aliens.draw(self.screen)
 
         # Draw the score information.
-        self.scoreboard.draw_score()
+        self.scoreboard.show_score()
 
         # Draw the play button if the game is inactive.
         if not self.game_active:
