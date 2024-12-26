@@ -112,7 +112,7 @@ class AlienInvasion:
         elif event.key == pygame.K_q:  # pylint: disable=no-member
             pygame.quit()  # pylint: disable=no-member
             sys.exit()
-        elif event.key == pygame.K_SPACE:  # pylint: disable=no-member
+        elif self.game_active and event.key == pygame.K_SPACE:  # pylint: disable=no-member
             self._fire_bullet()
 
     def _check_keyup_events(self, event):
@@ -147,7 +147,9 @@ class AlienInvasion:
             self.bullets, self.aliens, True, True)
 
         if collisions:
-            self.stats.score += self.settings.alien_points
+            for aliens in collisions.values():
+                # Add points for all aliens hit by a single bullet
+                self.stats.score += self.settings.alien_points * len(aliens)
             self.scoreboard.prep_score()
 
         if not self.aliens:
